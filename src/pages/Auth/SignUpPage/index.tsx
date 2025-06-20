@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { SignUpSchema, type SignUpFields } from "@/types/authTypes";
 import { InputComponent } from "@/customComponents/InputComponent";
 import { Button } from "@/components/ui/button";
@@ -11,8 +11,8 @@ import { Eye, EyeOff } from "lucide-react";
 
 export function SignUpPage() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
     console.log(data);
@@ -34,11 +34,7 @@ export function SignUpPage() {
           className="flex flex-col items-center justify-center gap-8"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <img
-            src={logo}
-            alt="Logo Sentinelas"
-            className="w-50 mb-4"
-          />
+          <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
           <div className="flex gap-8 mb-4">
             <button
               className="text-white font-bold text-xl"
@@ -75,15 +71,17 @@ export function SignUpPage() {
             {...register("password")}
             errorMessage={errors.password?.message}
             rightIcon={
-              <button 
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              tabIndex={-1}
-              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                tabIndex={-1}
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
-                {showPassword 
-                ? <EyeOff className="h-5 w-5 text-white" />
-                : <Eye className="h-5 w-5 text-gray-400" />}
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5 text-white" />
+                ) : (
+                  <Eye className="h-5 w-5 text-gray-400" />
+                )}
               </button>
             }
           />
@@ -98,11 +96,15 @@ export function SignUpPage() {
                 type="button"
                 onClick={() => setShowConfirmPassword((v) => !v)}
                 tabIndex={-1}
-                aria-label={showConfirmPassword ? "Ocultar senha" : "Mostrar senha"}
+                aria-label={
+                  showConfirmPassword ? "Ocultar senha" : "Mostrar senha"
+                }
               >
-                {showConfirmPassword
-                  ? <EyeOff className="h-5 w-5 text-white" />
-                  : <Eye className="h-5 w-5 text-gray-400" />}
+                {showConfirmPassword ? (
+                  <EyeOff className="h-5 w-5 text-white" />
+                ) : (
+                  <Eye className="h-5 w-5 text-gray-400" />
+                )}
               </button>
             }
           />
