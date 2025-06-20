@@ -15,6 +15,7 @@ export function LoginPage() {
 
   const onSubmit: SubmitHandler<LoginFields> = (data) => {
     console.log(data);
+    navigate("/home")
   };
 
   const {

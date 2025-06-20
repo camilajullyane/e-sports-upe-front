@@ -16,6 +16,7 @@ export function SignUpPage() {
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
     console.log(data);
+    navigate("/home")
   };
 
   const {
