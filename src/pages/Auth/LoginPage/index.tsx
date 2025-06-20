@@ -1,13 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { InputComponent } from "@/customComponents/InputComponent";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { LoginSchema, type LoginFields } from "@/types/authTypes";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import type { SubmitHandler } from "react-hook-form";
 
 export function LoginPage() {
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<LoginFields> = (data) => {
     console.log(data);
   };
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(LoginSchema),
+  });
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
@@ -18,16 +27,21 @@ export function LoginPage() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputComponent
-            label="Nome"
-            placeholder="Digite seu nome"
-            {...register("name")}
+            label="Email"
+            placeholder="Digite seu email"
+            {...register("email")}
+            errorMessage={errors.email?.message}
           />
           <InputComponent
             label="Senha"
             placeholder="Digite sua senha"
             {...register("password")}
+            errorMessage={errors.password?.message}
           />
-          <Button className="bg-blue-700 w-100 p-0">Enviar</Button>
+
+          <Button className="bg-blue-700 w-full p-0" type="submit">
+            Enviar
+          </Button>
         </form>
       </div>
     </div>
