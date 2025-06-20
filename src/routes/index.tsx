@@ -8,8 +8,8 @@ import { HomePage } from "../pages/Home";
 export function Router() {
   const authRoutes = (
     <Route element={<PublicRoute />}>
-      <Route index element={<Navigate to="login" />} />
-      <Route path="login" element={<LoginPage />} />
+      <Route index element={<Navigate to="signin" />} />
+      <Route path="signin" element={<LoginPage />} />
       <Route path="signup" element={<SignUpPage />} />
     </Route>
   );
