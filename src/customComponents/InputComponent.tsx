@@ -16,6 +16,7 @@ export function InputComponent({
   label,
   errorMessage,
   rightIcon,
+  ...rest
 }: InputComponentProps & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className="grid w-full max-w-sm items-center gap-3 m-0">
@@ -25,6 +26,7 @@ export function InputComponent({
           type={type}
           placeholder={placeholder}
           className="bg-stone-900 text-amber-50 border-0 placeholder:text-gray-400 placeholder:italic p-2 w-96 pr-10"
+          {...rest}
         />
         {rightIcon && (
           <span className="absolute inset-y-0 right-3 flex items-center cursor-pointer">
