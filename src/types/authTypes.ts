@@ -16,7 +16,20 @@ export const SignUpSchema = z.object({
 
 export type SignUpFields = z.infer<typeof SignUpSchema>;
 
-export interface UserCredentials {
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  id: number;
+  name: string;
+  email: string;
+  role: ROLE;
+  token: string;
+}
+
+export interface SignUpCredentials {
   name: string;
   email: string;
   password: string;
@@ -24,7 +37,7 @@ export interface UserCredentials {
 
 export type ROLE = "STUDENT" | "ADMIN";
 
-export interface UserResponse {
+export interface SignUpResponse {
   id: number;
   name: string;
   email: string;

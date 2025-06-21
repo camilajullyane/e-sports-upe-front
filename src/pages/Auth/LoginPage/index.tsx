@@ -8,12 +8,21 @@ import { useNavigate } from "react-router";
 import logo from "@/assets/logo-sentinelas.png";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { useSignInMutation } from "@/mutations/signIn.mutation";
 
 export function LoginPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
+  const { mutateAsync: loginFn } = useSignInMutation({});
+
   const onSubmit: SubmitHandler<LoginFields> = (data) => {
+    const loginRequest = { email: data.email, password: data.password.trim() };
+    loginFn(loginRequest)
+      .then((result) => {
+        console.log("logado", result);
+      })
+      .catch((error) => console.log("erro", error));
     console.log(data);
   };
 
