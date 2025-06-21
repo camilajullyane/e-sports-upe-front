@@ -1,3 +1,3 @@
-export function Team() {
+export function TeamPage() {
   return <div>TEAM</div>;
 }
