@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { InputComponent } from "@/customComponents/InputComponent";
 import { LoginSchema, type LoginFields } from "@/types/authTypes";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -20,7 +20,6 @@ export function LoginPage() {
   const {
     register,
     handleSubmit,
-    // control,
     formState: { errors },
   } = useForm<LoginFields>({
     resolver: zodResolver(LoginSchema),

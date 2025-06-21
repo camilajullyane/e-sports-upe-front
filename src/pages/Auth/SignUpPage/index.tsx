@@ -8,14 +8,30 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-sentinelas.png";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useSingUpMutation } from "@/mutations/signup.mutation";
 
 export function SignUpPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const { mutateAsync: signUp } = useSingUpMutation({});
+
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
-    console.log(data);
+    console.log("DADOS: ", data);
+    const signUpRequest = {
+      name: data.name.trim(),
+      email: data.email,
+      password: data.password.trim(),
+    };
+
+    signUp(signUpRequest)
+      .then((result) => {
+        console.log("CRIOU O USER", result);
+      })
+      .catch((error) => {
+        console.log("Deu erro", error);
+      });
   };
 
   const {
