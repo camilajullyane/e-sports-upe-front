@@ -39,22 +39,22 @@ export function LoginPage() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
-      <div className="flex min-h-screen min-w-300 bg-[url(@/assets/art.svg)]"></div>
-      <div className="flex flex-col items-center justify-center h-full w-full">
+      <div className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"></div>
+      <div className="flex flex-col items-center justify-center h-full min-w-150">
         <div className="flex flex-col gap-8 mb-4">
           <div>
             <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
           </div>
           <div className="flex justify-between">
             <button
-              className="text-blue-500 font-bold border-b-2 border-blue-700 text-xl"
+              className="text-blue-500 font-bold border-b-2 border-blue-700 text-xl cursor-pointe p-2 "
               type="button"
               disabled
             >
               Entrar
             </button>
             <button
-              className="text-white font bold text-xl"
+              className="text-white font bold text-xl cursor-pointer p-2"
               onClick={() => navigate("/signup")}
               type="button"
             >
@@ -87,15 +87,18 @@ export function LoginPage() {
                 aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
+                  <EyeOff className="h-5 w-5 text-gray-400 cursor-pointer" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
+                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
                 )}
               </button>
             }
           />
 
-          <Button className="bg-blue-700 w-full p-0" type="submit">
+          <Button
+            className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
+            type="submit"
+          >
             Entrar
           </Button>
         </form>

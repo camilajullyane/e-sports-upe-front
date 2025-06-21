@@ -18,7 +18,6 @@ export function SignUpPage() {
   const { mutateAsync: signUp } = useSingUpMutation({});
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
-    console.log("DADOS: ", data);
     const signUpRequest = {
       name: data.name.trim(),
       email: data.email,
@@ -26,9 +25,7 @@ export function SignUpPage() {
     };
 
     signUp(signUpRequest)
-      .then((result) => {
-        console.log("CRIOU O USER", result);
-      })
+      .then((result) => {})
       .catch((error) => {
         console.log("Deu erro", error);
       });
@@ -44,8 +41,8 @@ export function SignUpPage() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
-      <div className="flex min-h-screen min-w-300 bg-[url(@/assets/art.svg)]"></div>
-      <div className="flex items-center justify-center h-full w-full">
+      <div className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"></div>
+      <div className="flex items-center justify-center h-full min-w-150">
         <form
           className="flex flex-col items-center justify-center gap-8"
           onSubmit={handleSubmit(onSubmit)}
@@ -53,7 +50,7 @@ export function SignUpPage() {
           <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
           <div className="flex gap-8 mb-4">
             <button
-              className="text-white font-bold text-xl"
+              className="text-white font-bold text-xl cursor-pointer"
               type="button"
               onClick={() => navigate("/signin")}
             >
@@ -94,9 +91,9 @@ export function SignUpPage() {
                 aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-white" />
+                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
+                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
                 )}
               </button>
             }
@@ -117,14 +114,17 @@ export function SignUpPage() {
                 }
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-white" />
+                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
+                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
                 )}
               </button>
             }
           />
-          <Button className="bg-blue-700 w-full p-0" type="submit">
+          <Button
+            className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
+            type="submit"
+          >
             Criar Conta
           </Button>
         </form>
