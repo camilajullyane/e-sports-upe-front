@@ -1,4 +1,5 @@
 import { z } from "zod/v4";
+import type { User } from "./userTypes";
 
 export const LoginSchema = z.object({
   email: z.email("Email inválido"),
@@ -22,10 +23,7 @@ export interface LoginCredentials {
 }
 
 export interface LoginResponse {
-  id: number;
-  name: string;
-  email: string;
-  role: ROLE;
+  user: User;
   token: string;
 }
 

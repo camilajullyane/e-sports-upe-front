@@ -9,21 +9,24 @@ import logo from "@/assets/logo-sentinelas.png";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useSignInMutation } from "@/mutations/signIn.mutation";
+import { authStore } from "@/store/auth.store";
 
 export function LoginPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const { mutateAsync: loginFn } = useSignInMutation({});
+  const { authenticate } = authStore();
 
   const onSubmit: SubmitHandler<LoginFields> = (data) => {
     const loginRequest = { email: data.email, password: data.password.trim() };
     loginFn(loginRequest)
       .then((result) => {
-        console.log("logado", result);
+        const { token, user } = result;
+        authenticate(token, user);
+        navigate("/home");
       })
       .catch((error) => console.log("erro", error));
-    console.log(data);
   };
 
   const {

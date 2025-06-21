@@ -20,5 +20,10 @@ export function Router() {
     </Route>
   );
 
-  return <Routes>{authRoutes}</Routes>;
+  return (
+    <Routes>
+      {authRoutes}
+      {protectedRoutes}
+    </Routes>
+  );
 }
