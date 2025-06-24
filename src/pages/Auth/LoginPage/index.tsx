@@ -10,6 +10,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useSignInMutation } from "@/mutations/signIn.mutation";
 import { authStore } from "@/store/auth.store";
+import { toast } from "react-toastify";
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export function LoginPage() {
       .then((result) => {
         const { token, user } = result;
         authenticate(token, user);
+        toast.success("Login realizado com sucesso!");
         navigate("/home");
       })
       .catch((error) => console.log("erro", error));

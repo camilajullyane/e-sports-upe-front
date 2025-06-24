@@ -4,6 +4,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { authStore } from "@/store/auth.store";
 import { Suspense, lazy } from "react";
 import { CircularProgress } from "@/customComponents/CircularProgress";
+import { MainLayout } from "@/layout/MainLayout";
 
 const HomePageRouter = lazy(() =>
   import("@/pages/Home/Router").then((module) => ({
@@ -69,7 +70,7 @@ export function Router() {
         <Route
           element={logged ? <ProtectedRoute /> : <Navigate to={"/signin"} />}
         >
-          {protectedRoutes}
+          <Route element={<MainLayout />}>{protectedRoutes}</Route>
         </Route>
       </Routes>
     </Suspense>

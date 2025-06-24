@@ -9,6 +9,7 @@ import logo from "@/assets/logo-sentinelas.png";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useSingUpMutation } from "@/mutations/signup.mutation";
+import { toast } from "react-toastify";
 
 export function SignUpPage() {
   const navigate = useNavigate();
@@ -25,7 +26,10 @@ export function SignUpPage() {
     };
 
     signUp(signUpRequest)
-      .then((result) => {})
+      .then(() => {
+        toast.success("Cadastro realizado com sucesso! Faça login");
+        navigate("/signin");
+      })
       .catch((error) => {
         console.log("Deu erro", error);
       });
