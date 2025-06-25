@@ -20,20 +20,15 @@ export function LoginPage() {
   const { authenticate } = authStore();
 
   const onSubmit: SubmitHandler<LoginFields> = (data) => {
-<<<<<<< HEAD
-    console.log(data);
-    navigate("/home")
-=======
     const loginRequest = { email: data.email, password: data.password.trim() };
     loginFn(loginRequest)
-      .then((result) => {
+      .then((result: { token: any; user: any; }) => {
         const { token, user } = result;
         authenticate(token, user);
         toast.success("Login realizado com sucesso!");
         navigate("/home");
       })
-      .catch((error) => console.log("erro", error));
->>>>>>> origin/main
+      .catch((error: any) => console.log("erro", error));
   };
 
   const {
