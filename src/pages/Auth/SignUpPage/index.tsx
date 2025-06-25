@@ -1,22 +1,25 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { SignUpSchema, type SignUpFields } from "@/types/authTypes";
 import { InputComponent } from "@/customComponents/InputComponent";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-sentinelas.png";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useSingUpMutation } from "@/mutations/signup.mutation";
+import { toast } from "react-toastify";
 
 export function SignUpPage() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { mutateAsync: signUp } = useSingUpMutation({});
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
     console.log(data);
-    navigate("/home")
   };
 
   const {
@@ -29,20 +32,16 @@ export function SignUpPage() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
-      <div className="flex min-h-screen min-w-300 bg-[url(@/assets/art.svg)]"></div>
-      <div className="flex items-center justify-center h-full w-full">
+      <div className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"></div>
+      <div className="flex items-center justify-center h-full min-w-150">
         <form
           className="flex flex-col items-center justify-center gap-8"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <img
-            src={logo}
-            alt="Logo Sentinelas"
-            className="w-50 mb-4"
-          />
+          <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
           <div className="flex gap-8 mb-4">
             <button
-              className="text-white font-bold text-xl"
+              className="text-white font-bold text-xl cursor-pointer"
               type="button"
               onClick={() => navigate("/signin")}
             >
@@ -76,15 +75,17 @@ export function SignUpPage() {
             {...register("password")}
             errorMessage={errors.password?.message}
             rightIcon={
-              <button 
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              tabIndex={-1}
-              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              <button
+                type="button"
+                onClick={() => setShowPassword((v) => !v)}
+                tabIndex={-1}
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
-                {showPassword 
-                ? <EyeOff className="h-5 w-5 text-white" />
-                : <Eye className="h-5 w-5 text-gray-400" />}
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
+                ) : (
+                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
+                )}
               </button>
             }
           />
@@ -99,15 +100,22 @@ export function SignUpPage() {
                 type="button"
                 onClick={() => setShowConfirmPassword((v) => !v)}
                 tabIndex={-1}
-                aria-label={showConfirmPassword ? "Ocultar senha" : "Mostrar senha"}
+                aria-label={
+                  showConfirmPassword ? "Ocultar senha" : "Mostrar senha"
+                }
               >
-                {showConfirmPassword
-                  ? <EyeOff className="h-5 w-5 text-white" />
-                  : <Eye className="h-5 w-5 text-gray-400" />}
+                {showConfirmPassword ? (
+                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
+                ) : (
+                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
+                )}
               </button>
             }
           />
-          <Button className="bg-blue-700 w-full p-0" type="submit">
+          <Button
+            className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
+            type="submit"
+          >
             Criar Conta
           </Button>
         </form>

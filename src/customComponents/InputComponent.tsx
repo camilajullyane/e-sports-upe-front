@@ -1,8 +1,8 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { ComponentProps } from "react";
 
-
-interface InputComponentProps {
+interface InputComponentProps extends ComponentProps<"input"> {
   type?: string;
   placeholder: string;
   label: string;
@@ -17,7 +17,7 @@ export function InputComponent({
   errorMessage,
   rightIcon,
   ...rest
-}: InputComponentProps & React.InputHTMLAttributes<HTMLInputElement>) {
+}: InputComponentProps) {
   return (
     <div className="grid w-full max-w-sm items-center gap-3 m-0">
       <Label className="text-amber-50 font-bold">{label}</Label>
@@ -34,7 +34,9 @@ export function InputComponent({
           </span>
         )}
       </div>
-      {errorMessage && <p className="text-red-500 italic text-sm" >{errorMessage}</p>}
+      {errorMessage && (
+        <p className="text-red-500 italic text-sm">{errorMessage}</p>
+      )}
     </div>
   );
 }
