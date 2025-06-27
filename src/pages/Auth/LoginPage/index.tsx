@@ -22,13 +22,13 @@ export function LoginPage() {
   const onSubmit: SubmitHandler<LoginFields> = (data) => {
     const loginRequest = { email: data.email, password: data.password.trim() };
     loginFn(loginRequest)
-      .then((result: { token: any; user: any; }) => {
+      .then((result) => {
         const { token, user } = result;
         authenticate(token, user);
         toast.success("Login realizado com sucesso!");
         navigate("/home");
       })
-      .catch((error: any) => console.log("erro", error));
+      .catch((error) => console.log("erro", error));
   };
 
   const {

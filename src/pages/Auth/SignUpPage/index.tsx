@@ -18,15 +18,21 @@ export function SignUpPage() {
 
   const { mutateAsync: signUp } = useSingUpMutation({});
 
-  const onSubmit: SubmitHandler<SignUpFields> = async (data) => {
-    try {
-      await signUp(data);
-      toast.success("Cadastro realizado com sucesso!");
-      navigate("/signin");
-    } catch (error) {
-      toast.error("Erro ao cadastrar!");
-      console.log("erro", error);
-    }
+  const onSubmit: SubmitHandler<SignUpFields> = (data) => {
+    const signUpRequest = {
+      name: data.name.trim(),
+      email: data.email,
+      password: data.password.trim(),
+    };
+
+    signUp(signUpRequest)
+      .then(() => {
+        toast.success("Cadastro realizado com sucesso! Faça login");
+        navigate("/signin");
+      })
+      .catch((error) => {
+        console.log("Deu erro", error);
+      });
   };
 
   const {
