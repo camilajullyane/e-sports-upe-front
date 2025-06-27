@@ -36,6 +36,12 @@ const SignUpPageRouter = lazy(() =>
   }))
 );
 
+const ChampionshipAdmin = lazy(() =>
+  import("@/pages/(admin)/Championship/Router").then((module) => ({
+    default: module.Router,
+  }))
+);
+
 export function Router() {
   const { logged } = authStore().load();
   // const credetentials = authStore().getCredentials();
@@ -49,10 +55,16 @@ export function Router() {
     </Route>
   );
 
-  const protectedRoutes = (
+  const studentProtectedRoutes = (
     <Route element={<ProtectedRoute />}>
       <Route path="championship/*" element={<ChampionshipPageRouter />} />
       <Route path="team/*" element={<TeamPageRouter />} />
+    </Route>
+  );
+
+  const adminProtectedRoutes = (
+    <Route path="admin" element={<ProtectedRoute />}>
+      <Route path="campeonato/*" element={<ChampionshipAdmin />} />
     </Route>
   );
 
@@ -70,7 +82,7 @@ export function Router() {
         <Route
           element={logged ? <ProtectedRoute /> : <Navigate to={"/signin"} />}
         >
-          <Route element={<MainLayout />}>{protectedRoutes}</Route>
+          <Route element={<MainLayout />}>{adminProtectedRoutes}</Route>
         </Route>
       </Routes>
     </Suspense>
