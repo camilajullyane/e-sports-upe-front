@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 export function SignUpPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { mutateAsync: signUp } = useSingUpMutation({});
 
@@ -95,29 +94,6 @@ export function SignUpPage() {
                 aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
-                ) : (
-                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
-                )}
-              </button>
-            }
-          />
-          <InputComponent
-            label="Confirmar Senha"
-            placeholder="Confirme sua senha"
-            type={showConfirmPassword ? "text" : "password"}
-            {...register("confirmPassword")}
-            errorMessage={errors.confirmPassword?.message}
-            rightIcon={
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword((v) => !v)}
-                tabIndex={-1}
-                aria-label={
-                  showConfirmPassword ? "Ocultar senha" : "Mostrar senha"
-                }
-              >
-                {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5 text-white cursor-pointer" />
                 ) : (
                   <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
