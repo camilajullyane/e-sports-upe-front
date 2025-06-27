@@ -12,6 +12,12 @@ const InitialPageRouter = lazy(() =>
   }))
 );
 
+const HomePageRouter = lazy(() =>
+  import("@/pages/Home/Router").then((module) => ({
+    default: module.Router,
+  }))
+);
+
 const ChampionshipPageRouter = lazy(() =>
   import("@/pages/Championship/Router").then((module) => ({
     default: module.Router,
@@ -59,6 +65,7 @@ export function Router() {
     <Route element={<ProtectedRoute />}>
       <Route path="championship/*" element={<ChampionshipPageRouter />} />
       <Route path="team/*" element={<TeamPageRouter />} />
+      <Route path="home/*" element={<HomePageRouter />} />
     </Route>
   );
 
