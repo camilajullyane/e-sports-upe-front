@@ -6,10 +6,13 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import logo from "@/assets/logo-sentinelas.png";
+import { useNavigate } from "react-router";
+import { AuthButtons } from "./AuthButtons";
 
 export function NavBar() {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,42 +41,48 @@ export function NavBar() {
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="flex items-center justify-between h-12 w-full max-w-screen px-6">
+      <div className="relative flex items-center h-15 w-screen px-6">
+        {/* Logo à esquerda */}
         <img
           src={logo}
           alt="Logo Sentinelas"
           className="h-8"
           style={{ width: "auto" }}
         />
-        <NavigationMenuList className="flex gap-8 h-12 items-center w-screen">
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className="cursor-pointer text-white text-base font-semibold"
-              onClick={() => scrollToSection("beneficios")}
-            >
-              <span>Benefícios</span>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className="cursor-pointer text-white text-base font-semibold"
-              onClick={() => scrollToSection("jogos")}
-            >
-              <span>Jogos</span>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className="cursor-pointer text-white text-base font-semibold"
-              onClick={() => scrollToSection("campeonatos")}
-            >
-              <span>Campeonatos</span>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
+  
+        {/* Menu centralizado */}
+        <div className="absolute left-1/2 top-0 transform -translate-x-1/2 h-full flex items-center">
+          <NavigationMenuList className="flex gap-8 h-12 items-center">
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className="cursor-pointer text-white text-base font-semibold"
+                onClick={() => scrollToSection("beneficios")}
+              >
+                <span>Benefícios</span>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className="cursor-pointer text-white text-base font-semibold"
+                onClick={() => scrollToSection("jogos")}
+              >
+                <span>Jogos</span>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className="cursor-pointer text-white text-base font-semibold"
+                onClick={() => scrollToSection("campeonatos")}
+              >
+                <span>Campeonatos</span>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </div>
+        <AuthButtons />
       </div>
     </NavigationMenu>
   );

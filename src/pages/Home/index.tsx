@@ -1,6 +1,7 @@
 import { authStore } from "@/store/auth.store";
 import { NavBar } from "@/customComponents/navBar";
 import artTwo from "@/assets/art-two.jpg";
+import { AuthButtons } from "@/customComponents/AuthButtons";
 
 export function HomePage() {
   const credentials = authStore().getCredentials();
@@ -18,6 +19,9 @@ export function HomePage() {
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white text-4xl font-extrabold drop-shadow-2xl text-center"
           style={{ textShadow: "2px 2px 8px #000, 0 0 10px #000" }}>
         MELHOR PLATAFORMA DE E-SPORTS DO BRASIL
+        <div className="flex justify-center mt-4">
+        <AuthButtons size="sm" />
+      </div>
       </div>
       </div>
     </main>
