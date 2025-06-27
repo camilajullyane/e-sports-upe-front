@@ -43,95 +43,118 @@ export function SignUpPage() {
     resolver: zodResolver(SignUpSchema),
   });
 
+  // <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
+  //         <div className="flex gap-8 mb-4">
+  //           <button
+  //             className="text-white font-bold text-xl cursor-pointer"
+  //             type="button"
+  //             onClick={() => navigate("/signin")}
+  //           >
+  //             Entrar
+  //           </button>
+  //           <button
+  //             className="text-blue-500 font-bold border-b-2 border-blue-700 text-xl"
+  //             type="button"
+  //             disabled
+  //           >
+  //             Cadastrar
+  //           </button>
+  //         </div>
+
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
       <div className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"></div>
-      <div className="flex items-center justify-center h-full min-w-150">
-        <form
-          className="flex flex-col items-center justify-center gap-8"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
-          <div className="flex gap-8 mb-4">
+      <div className="flex flex-col items-center justify-center h-full min-w-150">
+        <div className="flex flex-col gap-2 mb-4">
+          <div>
+            <img src={logo} alt="Logo Sentinelas" className="w-50" />
+          </div>
+          <div className="flex justify-between">
             <button
-              className="text-white font-bold text-xl cursor-pointer"
+              className="text-white font bold text-xl cursor-pointer p-2"
               type="button"
               onClick={() => navigate("/signin")}
             >
               Entrar
             </button>
             <button
-              className="text-blue-500 font-bold border-b-2 border-blue-700 text-xl"
+              className="text-blue-500 font-bold border-b-2 border-blue-700 text-xl cursor-pointe p-2 "
               type="button"
               disabled
             >
               Cadastrar
             </button>
           </div>
-
-          <InputComponent
-            label="Nome"
-            placeholder="Digite seu nome"
-            {...register("name")}
-            errorMessage={errors.name?.message}
-          />
-          <InputComponent
-            label="Email"
-            placeholder="Digite seu email"
-            {...register("email")}
-            errorMessage={errors.email?.message}
-          />
-          <InputComponent
-            label="Senha"
-            placeholder="Digite sua senha"
-            type={showPassword ? "text" : "password"}
-            {...register("password")}
-            errorMessage={errors.password?.message}
-            rightIcon={
-              <button
-                type="button"
-                onClick={() => setShowPassword((v) => !v)}
-                tabIndex={-1}
-                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-              >
-                {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
-                ) : (
-                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
-                )}
-              </button>
-            }
-          />
-          <InputComponent
-            label="Confirmar Senha"
-            placeholder="Confirme sua senha"
-            type={showConfirmPassword ? "text" : "password"}
-            {...register("confirmPassword")}
-            errorMessage={errors.confirmPassword?.message}
-            rightIcon={
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword((v) => !v)}
-                tabIndex={-1}
-                aria-label={
-                  showConfirmPassword ? "Ocultar senha" : "Mostrar senha"
-                }
-              >
-                {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-white cursor-pointer" />
-                ) : (
-                  <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
-                )}
-              </button>
-            }
-          />
-          <Button
-            className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
-            type="submit"
+        </div>
+        <div className="flex items-center justify-center h-full min-w-150">
+          <form
+            className="flex flex-col items-center justify-center gap-6"
+            onSubmit={handleSubmit(onSubmit)}
           >
-            Criar Conta
-          </Button>
-        </form>
+            <InputComponent
+              label="Nome"
+              placeholder="Digite seu nome"
+              {...register("name")}
+              errorMessage={errors.name?.message}
+            />
+            <InputComponent
+              label="Email"
+              placeholder="Digite seu email"
+              {...register("email")}
+              errorMessage={errors.email?.message}
+            />
+            <InputComponent
+              label="Senha"
+              placeholder="Digite sua senha"
+              type={showPassword ? "text" : "password"}
+              {...register("password")}
+              errorMessage={errors.password?.message}
+              rightIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  tabIndex={-1}
+                  aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5 text-white cursor-pointer" />
+                  ) : (
+                    <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
+                  )}
+                </button>
+              }
+            />
+            <InputComponent
+              label="Confirmar Senha"
+              placeholder="Confirme sua senha"
+              type={showConfirmPassword ? "text" : "password"}
+              {...register("confirmPassword")}
+              errorMessage={errors.confirmPassword?.message}
+              rightIcon={
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((v) => !v)}
+                  tabIndex={-1}
+                  aria-label={
+                    showConfirmPassword ? "Ocultar senha" : "Mostrar senha"
+                  }
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff className="h-5 w-5 text-white cursor-pointer" />
+                  ) : (
+                    <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
+                  )}
+                </button>
+              }
+            />
+            <Button
+              className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
+              type="submit"
+            >
+              Criar Conta
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );

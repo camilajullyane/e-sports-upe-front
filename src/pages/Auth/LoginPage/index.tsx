@@ -43,9 +43,9 @@ export function LoginPage() {
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
       <div className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"></div>
       <div className="flex flex-col items-center justify-center h-full min-w-150">
-        <div className="flex flex-col gap-8 mb-4">
+        <div className="flex flex-col gap-2 mb-4 p-2">
           <div>
-            <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
+            <img src={logo} alt="Logo Sentinelas" className="w-50" />
           </div>
           <div className="flex justify-between">
             <button
@@ -65,7 +65,7 @@ export function LoginPage() {
           </div>
         </div>
         <form
-          className="flex flex-col items-center justify-center gap-8"
+          className="flex flex-col items-center justify-center gap-6"
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputComponent
