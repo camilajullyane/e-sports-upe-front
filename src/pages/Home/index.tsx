@@ -1,5 +1,5 @@
 import { authStore } from "@/store/auth.store";
-import { NavBar } from "@/customComponents/navBar";
+import { NavBar } from "@/customComponents/NavBar";
 import artTwo from "@/assets/art-two.jpg";
 import { AuthButtons } from "@/customComponents/AuthButtons";
 import { GamesIcons } from "@/customComponents/GamesIcons";

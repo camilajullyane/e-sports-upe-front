@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
-import { LoginPage } from ".";
 import { RouteNotFound } from "@/routes/error/RouteNotFound";
+import { HomePage } from "@/pages/Home";
 
 export function Router() {
   return (
     <Routes>
-      <Route index element={<LoginPage />} />
+      <Route index element={<HomePage />} />
       <Route path="*" element={<RouteNotFound />} />
     </Routes>
   );

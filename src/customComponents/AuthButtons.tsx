@@ -1,4 +1,3 @@
-import type { ComponentProps } from "react";
 import { useNavigate } from "react-router"
 
 export function AuthButtons({ size = "md" }) {
