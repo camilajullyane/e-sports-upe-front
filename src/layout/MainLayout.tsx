@@ -10,6 +10,9 @@ export function MainLayout() {
       <div className="flex-1 ml-4">
         <Outlet />
       </div>
+      <div className="">
+        <Outlet />
+      </div>
     </div>
   );
 }

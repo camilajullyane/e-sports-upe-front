@@ -6,8 +6,8 @@ import { Suspense, lazy } from "react";
 import { CircularProgress } from "@/customComponents/CircularProgress";
 import { MainLayout } from "@/layout/MainLayout";
 
-const HomePageRouter = lazy(() =>
-  import("@/pages/Home/Router").then((module) => ({
+const InitialPageRouter = lazy(() =>
+  import("@/pages/Initial/Router").then((module) => ({
     default: module.Router,
   }))
 );
@@ -42,7 +42,8 @@ export function Router() {
 
   const authRoutes = (
     <Route element={<PublicRoute />}>
-      <Route index element={<Navigate to="signin" />} />
+      {/* <Route index element={<Navigate to="/" />} /> */}
+      <Route index element={<InitialPageRouter />} />
       <Route path="signin/*" element={<LoginPageRouter />} />
       <Route path="signup/*" element={<SignUpPageRouter />} />
     </Route>
@@ -50,7 +51,6 @@ export function Router() {
 
   const protectedRoutes = (
     <Route element={<ProtectedRoute />}>
-      <Route path="home/*" element={<HomePageRouter />} />
       <Route path="championship/*" element={<ChampionshipPageRouter />} />
       <Route path="team/*" element={<TeamPageRouter />} />
     </Route>

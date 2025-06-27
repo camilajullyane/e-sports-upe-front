@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
-import { LoginPage } from ".";
 import { RouteNotFound } from "@/routes/error/RouteNotFound";
+import { LoginPage } from "@/pages/Auth/LoginPage";
 
 export function Router() {
   return (

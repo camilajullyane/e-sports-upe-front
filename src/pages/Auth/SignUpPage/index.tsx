@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 export function SignUpPage() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { mutateAsync: signUp } = useSingUpMutation({});
 
@@ -42,24 +41,6 @@ export function SignUpPage() {
   } = useForm<SignUpFields>({
     resolver: zodResolver(SignUpSchema),
   });
-
-  // <img src={logo} alt="Logo Sentinelas" className="w-50 mb-4" />
-  //         <div className="flex gap-8 mb-4">
-  //           <button
-  //             className="text-white font-bold text-xl cursor-pointer"
-  //             type="button"
-  //             onClick={() => navigate("/signin")}
-  //           >
-  //             Entrar
-  //           </button>
-  //           <button
-  //             className="text-blue-500 font-bold border-b-2 border-blue-700 text-xl"
-  //             type="button"
-  //             disabled
-  //           >
-  //             Cadastrar
-  //           </button>
-  //         </div>
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
@@ -124,29 +105,7 @@ export function SignUpPage() {
                 </button>
               }
             />
-            <InputComponent
-              label="Confirmar Senha"
-              placeholder="Confirme sua senha"
-              type={showConfirmPassword ? "text" : "password"}
-              {...register("confirmPassword")}
-              errorMessage={errors.confirmPassword?.message}
-              rightIcon={
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword((v) => !v)}
-                  tabIndex={-1}
-                  aria-label={
-                    showConfirmPassword ? "Ocultar senha" : "Mostrar senha"
-                  }
-                >
-                  {showConfirmPassword ? (
-                    <EyeOff className="h-5 w-5 text-white cursor-pointer" />
-                  ) : (
-                    <Eye className="h-5 w-5 text-gray-400 cursor-pointer" />
-                  )}
-                </button>
-              }
-            />
+
             <Button
               className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
               type="submit"
