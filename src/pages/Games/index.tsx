@@ -1,3 +1,4 @@
+import { ChampionshipCard } from "@/customComponents/ChampionshipCard";
 import { useGetGameInfo } from "@/query/getGamesInfo.query";
 import { useParams } from "react-router";
 
@@ -9,22 +10,25 @@ export function GamesPage() {
 
   return (
     <>
-      <div>{gameInfo?.id}</div>
-      <div>{gameInfo?.description}</div>
-      <div>{gameInfo?.developer}</div>
-      <div>{gameInfo?.name}</div>
-
-      {gameInfo?.championships.map((c) => {
-        return (
-          <>
-            <div>{c.name}</div>
-            <div>{c.description}</div>
-            <div>{c.format}</div>
-            <div>{c.status}</div>
-          </>
-        );
-      })}
-      {/* <div>{gameInfo?.championships}</div> */}
+      // <div>{gameInfo?.id}</div>
+      // <div>{gameInfo?.description}</div>
+      // <div>{gameInfo?.developer}</div>
+      // <div>{gameInfo?.name}</div>
+      <div className="flex w-full">
+        {gameInfo?.championships.map((c) => {
+          return (
+            <ChampionshipCard
+              gameName={c.name}
+              status={c.status}
+              date={c.beginDate}
+              description={c.description}
+              format={c.format}
+              numberOfMatches={c.numbersOfMatches}
+              key={c.id}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }

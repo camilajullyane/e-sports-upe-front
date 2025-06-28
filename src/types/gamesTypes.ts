@@ -5,7 +5,6 @@ export interface Game {
   name: string;
   developer: string;
   description: string;
-  championships: ChampionshipType[];
 }
 
 export interface GameResponse {
