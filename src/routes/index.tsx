@@ -12,8 +12,8 @@ const InitialPageRouter = lazy(() =>
   }))
 );
 
-const HomePageRouter = lazy(() =>
-  import("@/pages/Home/Router").then((module) => ({
+const GamesPageRouter = lazy(() =>
+  import("@/pages/Games/Router").then((module) => ({
     default: module.Router,
   }))
 );
@@ -57,7 +57,7 @@ export function Router() {
     <Route element={<ProtectedRoute />}>
       <Route path="championship/*" element={<ChampionshipPageRouter />} />
       <Route path="team/*" element={<TeamPageRouter />} />
-      <Route path="game/:gameId/*" element={<HomePageRouter />} />
+      <Route path="game/:gameId/*" element={<GamesPageRouter />} />
     </Route>
   );
 

@@ -1,7 +1,7 @@
 import { useGetGameInfo } from "@/query/getGamesInfo.query";
 import { useParams } from "react-router";
 
-export function HomePage() {
+export function GamesPage() {
   const params = useParams();
   const gameId = Number(params.gameId);
 
@@ -13,6 +13,18 @@ export function HomePage() {
       <div>{gameInfo?.description}</div>
       <div>{gameInfo?.developer}</div>
       <div>{gameInfo?.name}</div>
+
+      {gameInfo?.championships.map((c) => {
+        return (
+          <>
+            <div>{c.name}</div>
+            <div>{c.description}</div>
+            <div>{c.format}</div>
+            <div>{c.status}</div>
+          </>
+        );
+      })}
+      {/* <div>{gameInfo?.championships}</div> */}
     </>
   );
 }
