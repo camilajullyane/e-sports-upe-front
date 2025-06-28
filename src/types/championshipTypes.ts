@@ -1,3 +1,5 @@
+import type { Team } from "./teamTypes";
+
 export type STATUS =
   | "REGISTRATION_OPEN"
   | "REGISTRATION_CLOSED"
@@ -17,4 +19,5 @@ export interface ChampionshipType {
   gameId: 1;
   createdAt: string;
   updatedAt: string;
+  teams: Team[];
 }
