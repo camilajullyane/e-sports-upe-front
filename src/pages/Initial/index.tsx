@@ -1,12 +1,8 @@
-import { authStore } from "@/store/auth.store";
 import { NavBar } from "@/customComponents/NavBar";
 import { AuthButtons } from "@/customComponents/AuthButtons";
 import { GamesIcons } from "@/customComponents/GamesIcons";
 
 export function InitialPage() {
-  const credentials = authStore().getCredentials();
-  console.log("credenciais: ", credentials);
-
   return (
     <>
       <NavBar />
