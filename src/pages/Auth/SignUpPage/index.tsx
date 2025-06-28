@@ -23,6 +23,7 @@ export function SignUpPage() {
       email: data.email,
       password: data.password.trim(),
     };
+    console.log("submit");
 
     signUp(signUpRequest)
       .then(() => {

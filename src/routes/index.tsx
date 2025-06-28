@@ -12,8 +12,8 @@ const InitialPageRouter = lazy(() =>
   }))
 );
 
-const HomePageRouter = lazy(() =>
-  import("@/pages/Home/Router").then((module) => ({
+const GamesPageRouter = lazy(() =>
+  import("@/pages/Games/Router").then((module) => ({
     default: module.Router,
   }))
 );
@@ -50,11 +50,9 @@ const ChampionshipAdmin = lazy(() =>
 
 export function Router() {
   const { logged } = authStore().load();
-  // const credetentials = authStore().getCredentials();
 
   const authRoutes = (
     <Route element={<PublicRoute />}>
-      {/* <Route index element={<Navigate to="/" />} /> */}
       <Route index element={<InitialPageRouter />} />
       <Route path="signin/*" element={<LoginPageRouter />} />
       <Route path="signup/*" element={<SignUpPageRouter />} />
@@ -65,7 +63,7 @@ export function Router() {
     <Route element={<ProtectedRoute />}>
       <Route path="championship/*" element={<ChampionshipPageRouter />} />
       <Route path="team/*" element={<TeamPageRouter />} />
-      <Route path="home/*" element={<HomePageRouter />} />
+      <Route path="game/:gameId/*" element={<GamesPageRouter />} />
     </Route>
   );
 
