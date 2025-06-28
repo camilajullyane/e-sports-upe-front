@@ -41,7 +41,12 @@ export function LoginPage() {
 
   return (
     <div className="flex items-center justify-between w-full min-h-screen gap-2">
-      <div className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"></div>
+      <div
+        className="flex min-h-screen w-full bg-[url(@/assets/art.svg)]"
+        style={{
+          boxShadow: "inset 0 40px 180px 40px rgba(0,0,0,0.7)",
+        }}
+      ></div>
       <div className="flex flex-col items-center justify-center h-full min-w-150">
         <div className="flex flex-col gap-2 mb-4 p-2">
           <div>
