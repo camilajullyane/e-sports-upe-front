@@ -1,12 +1,13 @@
 import { ChampionshipCard } from "@/customComponents/ChampionshipCard";
 import { useGetGameInfo } from "@/query/getGamesInfo.query";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 export function GamesPage() {
   const params = useParams();
   const gameId = Number(params.gameId);
 
   const { data: gameInfo } = useGetGameInfo(gameId);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -25,6 +26,9 @@ export function GamesPage() {
               format={c.format}
               numberOfMatches={c.numbersOfMatches}
               key={c.id}
+              onClick={() => {
+                navigate(`/championship/${c.id}`);
+              }}
             />
           );
         })}

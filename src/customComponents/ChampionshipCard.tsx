@@ -15,19 +15,24 @@ interface ChampionshipCardProps {
   description: string;
   format: string;
   numberOfMatches: number;
+  onClick: () => void;
 }
 
 export function ChampionshipCard({
   date,
   gameName,
-  title,
+  // title,
   description,
   format,
   numberOfMatches,
   status,
+  onClick,
 }: ChampionshipCardProps) {
   return (
-    <Card className="w-full max-w-sm min-h-8 rounded-[4px] bg-[#1C1D2C] shadow-2xl border-zinc-700">
+    <Card
+      className="w-full max-w-sm min-h-8 rounded-[4px] bg-[#1C1D2C] shadow-2xl border-zinc-700"
+      onClick={onClick}
+    >
       <CardHeader className="text-zinc-50">
         <CardTitle className="text-zinc-50">{gameName}</CardTitle>
         <CardDescription className="text-zinc-50/60">

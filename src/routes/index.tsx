@@ -55,9 +55,12 @@ export function Router() {
 
   const protectedRoutes = (
     <Route element={<ProtectedRoute />}>
-      <Route path="championship/*" element={<ChampionshipPageRouter />} />
-      <Route path="team/*" element={<TeamPageRouter />} />
       <Route path="game/:gameId/*" element={<GamesPageRouter />} />
+      <Route
+        path="championship/:championshipId/*"
+        element={<ChampionshipPageRouter />}
+      />
+      <Route path="team/*" element={<TeamPageRouter />} />
     </Route>
   );
 

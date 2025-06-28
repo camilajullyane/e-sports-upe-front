@@ -36,9 +36,9 @@ export function Sidebar() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    navigate("/game/1");
-  }, []);
+  // useEffect(() => {
+  //   navigate("/game/1");
+  // }, []);
 
   return (
     <div
@@ -55,9 +55,9 @@ export function Sidebar() {
               }`}
               onMouseOver={() => setBgHover(game.color)}
               onClick={() => {
-                navigate(`/game/${game.id}`);
-                setBgColor(game.color);
                 setSelectedGame(game.id);
+                setBgColor(game.color);
+                navigate(`/game/${game.id}`);
               }}
             >
               <img src={game.img} className="w-8 h-8" />
