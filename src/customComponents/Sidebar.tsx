@@ -42,8 +42,8 @@ export function Sidebar() {
 
   return (
     <div
-      className={`flex flex-col min-h-screen w-full p-2 items-center gap-4 bg-[${bgColor}]  duration-300 ease-in`}
-      style={{ backgroundColor: bgHover }}
+      className={`flex flex-col min-h-screen w-full p-2 items-center gap-4  duration-300 ease-in`}
+      style={{ backgroundColor: bgHover != "" ? bgHover : bgColor }}
     >
       {gamesInfo.map((game) => {
         const isSelected = selectedGame === game.id;
@@ -54,7 +54,6 @@ export function Sidebar() {
                 isSelected ? "bg-gray-800/80" : ""
               }`}
               onMouseOver={() => setBgHover(game.color)}
-              onMouseLeave={() => setBgColor(game.color)}
               onClick={() => {
                 navigate(`/game/${game.id}`);
                 setBgColor(game.color);

@@ -26,7 +26,7 @@ export function LoginPage() {
         const { token, user } = result;
         authenticate(token, user);
         toast.success("Login realizado com sucesso!");
-        navigate("/game/:gameId");
+        navigate("/game/1");
       })
       .catch((error) => console.log("erro", error));
   };
