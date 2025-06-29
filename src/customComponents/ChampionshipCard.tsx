@@ -5,7 +5,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Calendar1, ShieldHalf } from "lucide-react";
+import { Calendar1, ShieldHalf, Loader2, Clock } from "lucide-react";
+import champ from "@/assets/champ.jpg"
 
 interface ChampionshipCardProps {
   title?: string;
@@ -28,46 +29,48 @@ export function ChampionshipCard({
   status,
   onClick,
 }: ChampionshipCardProps) {
+  const readStatus =
+    status === "IN_PROGRESS" ? "EM ANDAMENTO" :
+    status === "CLOSED" ? "ENCERRADO" :
+    status === "REGISTRATION_OPEN" ? "INSCRIÇÕES ABERTAS" : status;
+
   return (
     <Card
-      className="w-full max-w-sm min-h-8 rounded-[4px] bg-[#1C1D2C] shadow-2xl border-zinc-700"
+      className="relative w-full max-w-xs mx-5 rounded-[8px] bg-[#1C1D2C] overflow-hidden border border-[#2F3047] cursor-pointer"
       onClick={onClick}
     >
-      <CardHeader className="text-zinc-50">
-        <CardTitle className="text-zinc-50">{gameName}</CardTitle>
-        <CardDescription className="text-zinc-50/60">
-          {description}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col items-center justify-center text-zinc-200 gap-4">
-        <div
-          className={`${
-            status === "IN_PROGRESS"
-              ? "bg-green-100 text-green-700"
-              : status === "CLOSED"
-              ? "bg-red-100 text-red-700"
-              : status === "REGISTRATION_OPEN"
-              ? "bg-amber-600"
-              : "bg-gray-100 text-gray-700"
-          } p-1 rounded-[4px] font-bold text-sm`}
-        >
-          <p>{status}</p>
-        </div>
-
-        <div>
-          <div className="flex gap-4 text-sm font-semibold">
-            <p className="flex items-center gap-1">
-              <Calendar1 size="14px" color="#8CA800" />
-              {date}
-            </p>
-            <p className="flex items-center gap-1">
-              <ShieldHalf size="14px" color="#8CA800" />
-              {format}
-            </p>
+      <div className="absolute top-0 left-0 w-full h-1 bg-lime-500 z-10" />
+      
+      <div className="relative h-40 w-full">
+        <img
+          src={champ}
+          alt="Championship Cover"
+          className="w-full h-full object-cover"
+        />
+        
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-black/50 rounded-full p-2">
+            <Loader2 className="w-6 h-6 text-white" />
           </div>
         </div>
-        <div>
-          <p className="border-zinc-200 ">{numberOfMatches} partidas</p>
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-lime-500 text-black font-bold text-xs px-3 py-[2px] rounded-[10px]">
+          {readStatus}
+        </div>
+      </div>
+
+
+      <CardContent className="p-4 text-white space-y-3">
+        <p className="font-bold text-base uppercase">{gameName}</p>
+        <p className="text-sm -mt-3">{description}</p>
+        <div className="flex justify-between text-sm text-lime-300">
+          <span className="flex items-center gap-1">
+            <Calendar1 size={14} /> 
+            <span className="text-white">{date}</span>
+          </span>
+           <span className="flex items-center gap-1">
+            <Clock size={16} /> 
+            <span className="text-white">{date}</span>
+          </span>
         </div>
       </CardContent>
     </Card>

@@ -1,4 +1,5 @@
 import { ChampionshipCard } from "@/customComponents/ChampionshipCard";
+import { TitleGame } from "@/customComponents/TitleGame";
 import { useGetGameInfo } from "@/query/getGamesInfo.query";
 import { useNavigate, useParams } from "react-router";
 
@@ -8,13 +9,13 @@ export function GamesPage() {
 
   const { data: gameInfo } = useGetGameInfo(gameId);
   const navigate = useNavigate();
-
   return (
     <>
-      // <div>{gameInfo?.id}</div>
-      // <div>{gameInfo?.description}</div>
-      // <div>{gameInfo?.developer}</div>
-      // <div>{gameInfo?.name}</div>
+      <TitleGame gameId={gameId} gameName={gameInfo?.name} />
+      
+      <div>{gameInfo?.id}</div>
+      <div>{gameInfo?.description}</div>
+      <div>{gameInfo?.developer}</div>
       <div className="flex w-full">
         {gameInfo?.championships.map((c) => {
           return (
