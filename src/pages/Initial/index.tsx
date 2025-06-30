@@ -7,7 +7,7 @@ export function InitialPage() {
   const navigate = useNavigate();
 
   const handleGameClick = (gameId: number) => {
-    navigate(`/games/${gameId}`);
+    navigate(`/game/${gameId}`);
   };
 
   return (
