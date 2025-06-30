@@ -1,14 +1,21 @@
 import { NavBar } from "@/customComponents/NavBar";
 import { AuthButtons } from "@/customComponents/AuthButtons";
-import { GamesIcons } from "@/customComponents/GamesIcons";
+import { GameIcons } from "@/customComponents/GameIcons";
+import { useNavigate } from "react-router";
 
 export function InitialPage() {
+  const navigate = useNavigate();
+
+  const handleGameClick = (gameId: number) => {
+    navigate(`/games/${gameId}`);
+  };
+
   return (
     <>
       <NavBar />
       <div className="relative w-full h-full mt-15">
         <div
-          className="flex h-screen w-full bg-[url(@/assets/valorant.jpg)] bg-cover bg-center bg-no-repeat items-center justify-center"
+          className="flex h-[75vh] w-full bg-[url(@/assets/valorant.jpg)] bg-cover bg-center bg-no-repeat items-end justify-center pb-8"
           style={{
             boxShadow: "inset 0 40px 120px 40px rgba(0,0,0,0.7)",
           }}
@@ -25,7 +32,7 @@ export function InitialPage() {
                 <AuthButtons />
               </div>
               <div className="flex justify-center gap-4">
-                <GamesIcons />
+                <GameIcons onClick={handleGameClick} />
               </div>
             </div>
           </div>
