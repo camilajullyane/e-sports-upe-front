@@ -36,7 +36,7 @@ export function ChampionshipCard({
 
   return (
     <Card
-      className="relative w-full max-w-xs mx-5 rounded-[8px] bg-[#1C1D2C] overflow-hidden border border-[#2F3047] cursor-pointer"
+      className="relative w-full max-w-[280px] mx-5 rounded-[8px] bg-[#1C1D2C] overflow-hidden border border-[#2F3047] cursor-pointer"
       onClick={onClick}
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-lime-500 z-10" />
@@ -53,7 +53,7 @@ export function ChampionshipCard({
             <Loader2 className="w-6 h-6 text-white" />
           </div>
         </div>
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-lime-500 text-black font-bold text-xs px-3 py-[2px] rounded-[10px]">
+        <div className="min-w-fit whitespace-nowrap absolute bottom-2 left-1/2 -translate-x-1/2 bg-lime-500 text-black font-bold text-xs px-4 py-[2px] rounded-[10px]">
           {readStatus}
         </div>
       </div>
@@ -65,10 +65,6 @@ export function ChampionshipCard({
         <div className="flex justify-between text-sm text-lime-300">
           <span className="flex items-center gap-1">
             <Calendar1 size={14} /> 
-            <span className="text-white">{date}</span>
-          </span>
-           <span className="flex items-center gap-1">
-            <Clock size={16} /> 
             <span className="text-white">{date}</span>
           </span>
         </div>
