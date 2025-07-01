@@ -7,26 +7,26 @@ interface ChampionshipDetailsProps {
 
 export function ChampionshipDetails({ championshipInfo }: ChampionshipDetailsProps) {
   // Cores centralizadas para os ícones
-  const IconColor = "text-red-500";
+  const IconClassName = "w-5 h-5 text-red-500";
 
   const leftColumnDetails = [
     {
-      icon: <ListChecks className={`w-5 h-5 ${IconColor}`} />,
+      icon: <ListChecks className={`${IconClassName}`} />,
       label: "Formato",
       value: championshipInfo.format,
     },
     {
-      icon: <ListChecks className={`w-5 h-5 ${IconColor}`} />,
+      icon: <ListChecks className={`${IconClassName}`} />,
       label: "Número de Partidas",
       value: `${championshipInfo.numbersOfMatches} jogos`,
     },
     {
-      icon: <Users className={`w-5 h-5 ${IconColor}`} />,
+      icon: <Users className={`${IconClassName}`} />,
       label: "Times Participantes",
       value: `${championshipInfo.teams?.length || 0} times`,
     },
     {
-      icon: <ListChecks className={`w-5 h-5 ${IconColor}`} />,
+      icon: <ListChecks className={`${IconClassName}`} />,
       label: "Status",
       value: translateStatus(championshipInfo.status),
     },
@@ -34,17 +34,17 @@ export function ChampionshipDetails({ championshipInfo }: ChampionshipDetailsPro
 
   const rightColumnDetails = [
     {
-      icon: <CalendarDays className={`w-5 h-5 ${IconColor}`} />,
+      icon: <CalendarDays className={`${IconClassName}`} />,
       label: "Início do Campeonato",
       value: formatDate(championshipInfo.beginDate),
     },
     {
-      icon: <CalendarDays className={`w-5 h-5 ${IconColor}`} />,
+      icon: <CalendarDays className={`${IconClassName}`} />,
       label: "Término do Campeonato",
       value: formatDate(championshipInfo.endDate),
     },
     {
-      icon: <CalendarDays className={`w-5 h-5 ${IconColor}`} />,
+      icon: <CalendarDays className={`${IconClassName}`} />,
       label: "Criado em",
       value: formatDate(championshipInfo.createdAt),
     },
