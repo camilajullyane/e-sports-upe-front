@@ -29,6 +29,7 @@ export function ChampionshipCard({
   status,
   onClick,
 }: ChampionshipCardProps) {
+
   const readStatus =
     status === "IN_PROGRESS" ? "EM ANDAMENTO" :
     status === "CLOSED" ? "ENCERRADO" :
@@ -65,10 +66,19 @@ export function ChampionshipCard({
         <div className="flex justify-between text-sm text-lime-300">
           <span className="flex items-center gap-1">
             <Calendar1 size={14} /> 
-            <span className="text-white">{date}</span>
+            <span className="text-white">{formatDate(date)}</span>
           </span>
         </div>
       </CardContent>
     </Card>
   );
+}
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 }
