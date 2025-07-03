@@ -11,6 +11,7 @@ export class ChampionshipService {
     });
     return data;
   }
+
   public async getChampionshipInfo(id: number) {
     const { data: response } = await api.get(`/championship/${id}`);
     return response;

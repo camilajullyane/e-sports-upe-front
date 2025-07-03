@@ -90,7 +90,7 @@ export function Router() {
         <Route
           element={logged ? <ProtectedRoute /> : <Navigate to={"/signin"} />}
         >
-          <Route element={<MainLayout />}>{adminProtectedRoutes}</Route>
+          <Route element={<MainLayout />}>{studentProtectedRoutes}</Route>
         </Route>
       </Routes>
     </Suspense>
