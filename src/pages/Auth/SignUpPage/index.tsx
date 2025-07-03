@@ -116,7 +116,7 @@ export function SignUpPage() {
               className="bg-blue-700 w-full p-0 cursor-pointer hover:bg-blue-800"
               type="submit"
             >
-              Criar Conta
+              Criar conta
             </Button>
           </form>
         </div>

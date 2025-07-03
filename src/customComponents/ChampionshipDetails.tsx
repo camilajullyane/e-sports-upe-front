@@ -5,7 +5,9 @@ interface ChampionshipDetailsProps {
   championshipInfo: ChampionshipType;
 }
 
-export function ChampionshipDetails({ championshipInfo }: ChampionshipDetailsProps) {
+export function ChampionshipDetails({
+  championshipInfo,
+}: ChampionshipDetailsProps) {
   // Cores centralizadas para os ícones
   const IconClassName = "w-5 h-5 text-red-500";
 
@@ -18,12 +20,16 @@ export function ChampionshipDetails({ championshipInfo }: ChampionshipDetailsPro
     {
       icon: <ListChecks className={`${IconClassName}`} />,
       label: "Número de Partidas",
-      value: `${championshipInfo.numbersOfMatches} jogos`,
+      value: `${championshipInfo.numbersOfMatches} ${
+        championshipInfo.numbersOfMatches > 1 ? "jogos" : "jogo"
+      }`,
     },
     {
       icon: <Users className={`${IconClassName}`} />,
       label: "Times Participantes",
-      value: `${championshipInfo.teams?.length || 0} times`,
+      value: `${championshipInfo.teams.length || 0} ${
+        championshipInfo.teams?.length > 1 ? "times" : "time"
+      }`,
     },
     {
       icon: <ListChecks className={`${IconClassName}`} />,
