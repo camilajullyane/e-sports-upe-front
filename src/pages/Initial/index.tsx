@@ -1,17 +1,25 @@
-import { authStore } from "@/store/auth.store";
 import { NavBar } from "@/customComponents/NavBar";
 import { AuthButtons } from "@/customComponents/AuthButtons";
-import { GamesIcons } from "@/customComponents/GamesIcons";
+import { GameIcons } from "@/customComponents/GameIcons";
+import { useNavigate } from "react-router";
 
 export function InitialPage() {
-  const credentials = authStore().getCredentials();
-  console.log("credenciais: ", credentials);
+  const navigate = useNavigate();
+
+  const handleGameClick = (gameId: number) => {
+    navigate(`/game/${gameId}`);
+  };
 
   return (
     <>
       <NavBar />
       <div className="relative w-full h-full mt-15">
-        <div className="flex h-screen w-full bg-[url(@/assets/art-two.jpg)] bg-cover bg-center bg-no-repeat items-center justify-center">
+        <div
+          className="flex h-[75vh] w-full bg-[url(@/assets/valorant.jpg)] bg-cover bg-center bg-no-repeat items-end justify-center pb-8"
+          style={{
+            boxShadow: "inset 0 40px 120px 40px rgba(0,0,0,0.7)",
+          }}
+        >
           <div
             className=" text-white text-4xl font-extrabold drop-shadow-2xl text-center"
             style={{ textShadow: "2px 2px 8px #000, 0 0 10px #000" }}
@@ -24,7 +32,7 @@ export function InitialPage() {
                 <AuthButtons />
               </div>
               <div className="flex justify-center gap-4">
-                <GamesIcons />
+                <GameIcons onClick={handleGameClick} />
               </div>
             </div>
           </div>
