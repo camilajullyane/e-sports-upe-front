@@ -18,6 +18,7 @@ export function SignUpPage() {
   const { mutateAsync: signUp } = useSingUpMutation({});
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
+    console.log("Dados enviados:", data);
     const signUpRequest = {
       name: data.name.trim(),
       email: data.email,
@@ -32,6 +33,7 @@ export function SignUpPage() {
       })
       .catch((error) => {
         console.log("Deu erro", error);
+        toast.error("Erro ao cadastrar: " + (error?.message || "Erro desconhecido"));
       });
   };
 
