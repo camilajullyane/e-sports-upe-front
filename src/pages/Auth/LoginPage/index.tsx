@@ -26,7 +26,13 @@ export function LoginPage() {
         const { token, user } = result;
         authenticate(token, user);
         toast.success("Login realizado com sucesso!");
-        navigate("/game/1");
+
+        if (user.role === "STUDENT") {
+          navigate("/game/1");
+        }
+        if (user.role === "ADMIN") {
+          navigate("/admin/campeonato");
+        }
       })
       .catch((error) => console.log("erro", error));
   };

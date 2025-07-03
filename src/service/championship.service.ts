@@ -1,8 +1,18 @@
 import { api } from "@/lib/axios";
-import type { ChampionshipType } from "@/types/championshipTypes";
+import type { CreateChampionship } from "@/types/championshipTypes";
 
 export class ChampionshipService {
-  public async getChampionshipInfo(id: number): Promise<ChampionshipType> {
+  async create(championship: CreateChampionship) {
+    const { gameId, ...rest } = championship;
+    api.defaults.headers.common["Content-Type"] = "application/json";
+    const { data } = await api.post(`/${gameId}/championship`, {
+      ...rest,
+      numbersOfMatches: Number(rest.numbersOfMatches),
+    });
+    return data;
+  }
+
+  public async getChampionshipInfo(id: number) {
     const { data: response } = await api.get(`/championship/${id}`);
     return response;
   }
