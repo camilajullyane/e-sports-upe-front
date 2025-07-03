@@ -1,53 +1,62 @@
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Label } from "@/components/ui/label";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ChevronDownIcon } from "lucide-react";
-import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
+import type { ControllerRenderProps } from "react-hook-form";
 
-interface DatePickerProps {
+interface DatePickerProps extends ControllerRenderProps {
   label: string;
 }
 
 export function DatePicker(props: DatePickerProps) {
-  const [open, setOpen] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(undefined);
-
   return (
-    <div className="flex flex-col gap-3">
-      <Label htmlFor="date" className="px-1 text-zinc-50">
-        {props.label}
-      </Label>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger
-          asChild
-          className="bg-stone-900 text-amber-50 border-0 placeholder:text-gray-400 placeholder:italic p-2 w-96 pr-10 hover:bg-stone-900 hover:text-amber-50"
-        >
-          <Button
-            variant="outline"
-            id="date"
-            className="justify-between font-normal"
+    <div className="flex flex-col gap-3 w-full">
+      <FormItem className="flex flex-col">
+        <FormLabel className="text-zinc-50">{props.label}</FormLabel>
+        <Popover>
+          <PopoverTrigger
+            asChild
+            className="bg-stone-900 border-none text-zinc-50 w-full"
           >
-            {date ? date.toLocaleDateString() : "Selecione a data"}
-            <ChevronDownIcon />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-          <Calendar
-            mode="single"
-            selected={date}
-            captionLayout="dropdown"
-            onSelect={(date) => {
-              setDate(date);
-              setOpen(false);
-            }}
-          />
-        </PopoverContent>
-      </Popover>
+            <FormControl className="w-full">
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "pl-3 text-left font-normal",
+                  !props.value && "text-muted-foreground"
+                )}
+              >
+                {props.value ? (
+                  format(props.value, "PPP", { locale: ptBR })
+                ) : (
+                  <span>Selecione uma data</span>
+                )}
+                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+              </Button>
+            </FormControl>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
+            <Calendar
+              mode="single"
+              selected={props.value}
+              onSelect={props.onChange}
+              disabled={(date) =>
+                date < new Date() || date < new Date("1900-01-01")
+              }
+              captionLayout="dropdown"
+              locale={ptBR}
+            />
+          </PopoverContent>
+        </Popover>
+      </FormItem>
     </div>
   );
 }

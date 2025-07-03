@@ -1,3 +1,4 @@
+import { z } from "zod/v4";
 import type { Team } from "./teamTypes";
 
 export type STATUS =
@@ -21,3 +22,15 @@ export interface ChampionshipType {
   updatedAt: string;
   teams: Team[];
 }
+
+export const CreateChampionshipSchema = z.object({
+  name: z.string("Digite o nome"),
+  description: z.string("Digite a descrição"),
+  format: z.string("Digite o formato"),
+  numbersOfMatches: z.string(),
+  beginDate: z.date(),
+  endDate: z.date(),
+  gameId: z.string(),
+});
+
+export type CreateChampionship = z.infer<typeof CreateChampionshipSchema>;
