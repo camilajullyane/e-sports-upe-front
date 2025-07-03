@@ -1,4 +1,5 @@
 import { AuthService } from "./auth.service";
+import { ChampionshipService } from "./championship.service";
 import { GamesService } from "./games.service";
 import { ChampionshipService } from "./championship.service";
 
