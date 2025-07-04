@@ -1,5 +1,6 @@
 import { CalendarDays, Users, ListChecks } from "lucide-react";
 import type { ChampionshipType } from "@/types/championshipTypes";
+import { Modal } from "./Modal";
 
 interface ChampionshipDetailsProps {
   championshipInfo: ChampionshipType;
@@ -20,16 +21,12 @@ export function ChampionshipDetails({
     {
       icon: <ListChecks className={`${IconClassName}`} />,
       label: "Número de Partidas",
-      value: `${championshipInfo.numbersOfMatches} ${
-        championshipInfo.numbersOfMatches > 1 ? "jogos" : "jogo"
-      }`,
+      value: `${championshipInfo.numbersOfMatches} jogos`,
     },
     {
       icon: <Users className={`${IconClassName}`} />,
       label: "Times Participantes",
-      value: `${championshipInfo.teams.length || 0} ${
-        championshipInfo.teams?.length > 1 ? "times" : "time"
-      }`,
+      value: `${championshipInfo.teams?.length || 0} times`,
     },
     {
       icon: <ListChecks className={`${IconClassName}`} />,
@@ -58,8 +55,13 @@ export function ChampionshipDetails({
 
   return (
     <div className="bg-[#0F0F1B] text-white m-10 p-6 rounded-lg shadow-md w-full max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold mb-2">{championshipInfo.name}</h2>
-      <p className="text-gray-300 mb-6">{championshipInfo.description}</p>
+      <div className="flex justify-between items-center">
+        <div>
+          <h2 className="text-2xl font-bold mb-2">{championshipInfo.name}</h2>
+          <p className="text-gray-300 mb-6">{championshipInfo.description}</p>
+        </div>
+        <Modal championshipInfo={championshipInfo} />
+      </div>
 
       <div className="grid grid-cols-2 divide-x divide-gray-700">
         <div className="pr-6 space-y-6">

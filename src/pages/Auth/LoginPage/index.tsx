@@ -25,6 +25,7 @@ export function LoginPage() {
       .then((result) => {
         const { token, user } = result;
         authenticate(token, user);
+
         toast.success("Login realizado com sucesso!");
         navigate("/game/1");
       })

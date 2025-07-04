@@ -20,4 +20,5 @@ export interface ChampionshipType {
   createdAt: string;
   updatedAt: string;
   teams: Team[];
+  numPlayersByTeam: number;
 }

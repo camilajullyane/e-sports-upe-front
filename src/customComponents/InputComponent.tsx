@@ -25,7 +25,7 @@ export function InputComponent({
         <Input
           type={type}
           placeholder={placeholder}
-          className="bg-stone-900 text-amber-50 border-0 placeholder:text-gray-400 placeholder:italic p-2 w-96 pr-10"
+          className="bg-stone-900 text-amber-50 border-0 placeholder:text-gray-400 placeholder:italic p-2 w-96 pr-10 rounded-[4px]"
           {...rest}
         />
         {rightIcon && (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ToolTip } from "./ToolTip";
 import { useNavigate } from "react-router";
 
@@ -35,10 +35,6 @@ export function Sidebar() {
   const [selectedGame, setSelectedGame] = useState(1);
 
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   navigate("/game/1");
-  // }, []);
 
   return (
     <div
