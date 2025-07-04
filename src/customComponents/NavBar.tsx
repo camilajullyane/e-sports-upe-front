@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
 import logo from "@/assets/logo-sentinelas.png";
-import { useNavigate } from "react-router";
 import { AuthButtons } from "./AuthButtons";
 
 export function NavBar() {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {

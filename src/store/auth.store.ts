@@ -9,6 +9,7 @@ interface IAuthStore {
   authenticate: (token: string, user: User) => void;
   getCredentials: () => void;
   load: () => { logged: boolean };
+  logout: () => void;
 }
 
 export const authStore = create<IAuthStore>()(

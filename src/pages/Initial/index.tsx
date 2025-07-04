@@ -1,15 +1,8 @@
 import { NavBar } from "@/customComponents/NavBar";
 import { AuthButtons } from "@/customComponents/AuthButtons";
 import { GameIcons } from "@/customComponents/GameIcons";
-import { useNavigate } from "react-router";
 
 export function InitialPage() {
-  const navigate = useNavigate();
-
-  const handleGameClick = (gameId: number) => {
-    navigate(`/game/${gameId}`);
-  };
-
   return (
     <>
       <NavBar />
@@ -32,7 +25,7 @@ export function InitialPage() {
                 <AuthButtons />
               </div>
               <div className="flex justify-center gap-4">
-                <GameIcons onClick={handleGameClick} />
+                <GameIcons />
               </div>
             </div>
           </div>

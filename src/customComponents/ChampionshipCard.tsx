@@ -1,12 +1,6 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Calendar1, ShieldHalf, Loader2, Clock } from "lucide-react";
-import champ from "@/assets/champ.jpg"
+import { Card, CardContent } from "@/components/ui/card";
+import { Calendar1, Loader2 } from "lucide-react";
+import champ from "@/assets/champ.jpg";
 
 interface ChampionshipCardProps {
   title?: string;
@@ -22,18 +16,18 @@ interface ChampionshipCardProps {
 export function ChampionshipCard({
   date,
   gameName,
-  // title,
   description,
-  format,
-  numberOfMatches,
   status,
   onClick,
 }: ChampionshipCardProps) {
-
   const readStatus =
-    status === "IN_PROGRESS" ? "EM ANDAMENTO" :
-    status === "CLOSED" ? "ENCERRADO" :
-    status === "REGISTRATION_OPEN" ? "INSCRIÇÕES ABERTAS" : status;
+    status === "IN_PROGRESS"
+      ? "EM ANDAMENTO"
+      : status === "CLOSED"
+      ? "ENCERRADO"
+      : status === "REGISTRATION_OPEN"
+      ? "INSCRIÇÕES ABERTAS"
+      : status;
 
   return (
     <Card
@@ -41,14 +35,14 @@ export function ChampionshipCard({
       onClick={onClick}
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-lime-500 z-10" />
-      
+
       <div className="relative h-40 w-full">
         <img
           src={champ}
           alt="Championship Cover"
           className="w-full h-full object-cover"
         />
-        
+
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="bg-black/50 rounded-full p-2">
             <Loader2 className="w-6 h-6 text-white" />
@@ -59,13 +53,12 @@ export function ChampionshipCard({
         </div>
       </div>
 
-
       <CardContent className="p-4 text-white space-y-3">
         <p className="font-bold text-base uppercase">{gameName}</p>
         <p className="text-sm -mt-3">{description}</p>
         <div className="flex justify-between text-sm text-lime-300">
           <span className="flex items-center gap-1">
-            <Calendar1 size={14} /> 
+            <Calendar1 size={14} />
             <span className="text-white">{formatDate(date)}</span>
           </span>
         </div>

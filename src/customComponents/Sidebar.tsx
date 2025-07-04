@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ToolTip } from "./ToolTip";
 import { useNavigate } from "react-router";
+import { Power } from "lucide-react";
+import { authStore } from "@/store/auth.store";
 
 const gamesInfo = [
   {
@@ -10,10 +12,10 @@ const gamesInfo = [
     color: "#FB4B56",
   },
   {
-    id: 5,
-    name: "League of Legends",
-    img: "https://api.gamersclub.gg/v1/games/lol/icon?color=%23FFFFFF",
-    color: "#AE6CF9",
+    id: 2,
+    name: "Counter-Strike",
+    img: "https://api.gamersclub.gg/v1/games/csgo/icon?color=%23FFFFFF",
+    color: "#0BC8D5",
   },
   {
     id: 4,
@@ -22,10 +24,10 @@ const gamesInfo = [
     color: "#3FE8AE",
   },
   {
-    id: 2,
-    name: "Counter-Strike",
-    img: "https://api.gamersclub.gg/v1/games/csgo/icon?color=%23FFFFFF",
-    color: "#0BC8D5",
+    id: 5,
+    name: "League of Legends",
+    img: "https://api.gamersclub.gg/v1/games/lol/icon?color=%23FFFFFF",
+    color: "#AE6CF9",
   },
 ];
 
@@ -41,6 +43,16 @@ export function Sidebar() {
       className={`flex flex-col min-h-screen w-full p-2 items-center gap-4  duration-300 ease-in`}
       style={{ backgroundColor: bgHover != "" ? bgHover : bgColor }}
     >
+      <button
+        className="mb-5 flex items-center justify-center w-12 h-12 hover:bg-red-600 text-white rounded-full transition-colors duration-200"
+        title="Sair"
+        onClick={() => {
+          authStore.getState().logout?.();
+          navigate("/signin");
+        }}
+      >
+        <Power size={22} />
+      </button>
       {gamesInfo.map((game) => {
         const isSelected = selectedGame === game.id;
         return (

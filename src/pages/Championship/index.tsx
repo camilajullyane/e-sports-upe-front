@@ -13,7 +13,7 @@ export function Championship() {
   if (isLoading || !championshipInfo) return <p>Carregando</p>;
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full">
+    <div className="flex justify-center items-center w-full">
       <ChampionshipDetails championshipInfo={championshipInfo} />
     </div>
   );
