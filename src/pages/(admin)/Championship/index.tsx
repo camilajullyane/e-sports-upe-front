@@ -37,7 +37,7 @@ export function ChampionshipAdmin() {
     <main className="">
       <h1 className="text-center text-zinc-50 text-3xl">Campeonatos</h1>
       <section className="flex justify-center w-full">
-        <div className="w-[50%] flex flex-col items-center">
+        <div className="w-full flex flex-col items-center">
           <h2 className="text-zinc-50 text-2xl text-center">Cadastrar</h2>
           <Form {...form}>
             <form
@@ -104,7 +104,6 @@ export function ChampionshipAdmin() {
             </form>
           </Form>
         </div>
-        <div className="w-[50%]">tabela</div>
       </section>
     </main>
   );
