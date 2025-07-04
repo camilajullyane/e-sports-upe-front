@@ -27,9 +27,18 @@ export function LoginPage() {
         authenticate(token, user);
 
         toast.success("Login realizado com sucesso!");
-        navigate("/game/1");
+
+        if (user.role === "STUDENT") {
+          navigate("/game/1");
+        }
+        if (user.role === "ADMIN") {
+          navigate("/admin/campeonato");
+        }
       })
-      .catch((error) => console.log("erro", error));
+      .catch((error) => {
+        console.log("erro", error);
+        toast.error("Credenciais erradas.");
+      });
   };
 
   const {

@@ -7,9 +7,6 @@ interface AuthButtonsProps {
 
 export function AuthButtons(props: AuthButtonsProps) {
   const navigate = useNavigate();
-  // const sizeClasses = size === "sm"
-  // ? "px-3 py-1.5 text-sm"
-  // : "px-4 py-2 text-base";
 
   return (
     <div className={twMerge("ml-auto flex gap-2 my-15 pr-5", props.className)}>
