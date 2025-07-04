@@ -68,7 +68,7 @@ export function Modal({ championshipInfo }: ModalProps) {
           Inscreva sua equipe
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-3xl h-[800px]">
+      <DialogContent className="sm:max-w-3xl max-h-[95vh]">
         <DialogHeader>
           <DialogTitle className="text-zinc-50">
             Preencha as informações do seu time
@@ -76,7 +76,7 @@ export function Modal({ championshipInfo }: ModalProps) {
         </DialogHeader>
         <div className="flex flex-col justify-between items-center gap-4">
           <form
-            className="flex flex-col items-center justify-center gap-6"
+            className="flex flex-col items-center w-full justify-center gap-6"
             onSubmit={handleSubmit(onSubmit)}
           >
             <InputComponent

@@ -10,6 +10,7 @@ export function ChampionshipDetails({
   championshipInfo,
 }: ChampionshipDetailsProps) {
   // Cores centralizadas para os ícones
+
   const IconClassName = "w-5 h-5 text-red-500";
 
   const leftColumnDetails = [
@@ -31,6 +32,7 @@ export function ChampionshipDetails({
     {
       icon: <ListChecks className={`${IconClassName}`} />,
       label: "Status",
+
       value: translateStatus(championshipInfo.status),
     },
   ];
@@ -123,10 +125,12 @@ function translateStatus(status: string) {
   switch (status) {
     case "IN_PROGRESS":
       return "Em andamento";
-    case "FINISHED":
-      return "Finalizado";
-    case "CREATED":
-      return "Criado";
+    case "CLOSED":
+      return "Encerrado";
+    case "REGISTRATION_OPEN":
+      return "Inscrições abertas";
+    case "REGISTRATION_CLOSED":
+      return "Inscrições encerradas";
     default:
       return status;
   }
