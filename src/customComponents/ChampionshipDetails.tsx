@@ -1,11 +1,14 @@
 import { CalendarDays, Users, ListChecks } from "lucide-react";
 import type { ChampionshipType } from "@/types/championshipTypes";
+import { Modal } from "./Modal";
 
 interface ChampionshipDetailsProps {
   championshipInfo: ChampionshipType;
 }
 
-export function ChampionshipDetails({ championshipInfo }: ChampionshipDetailsProps) {
+export function ChampionshipDetails({
+  championshipInfo,
+}: ChampionshipDetailsProps) {
   // Cores centralizadas para os ícones
   const IconClassName = "w-5 h-5 text-red-500";
 
@@ -52,8 +55,13 @@ export function ChampionshipDetails({ championshipInfo }: ChampionshipDetailsPro
 
   return (
     <div className="bg-[#0F0F1B] text-white m-10 p-6 rounded-lg shadow-md w-full max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold mb-2">{championshipInfo.name}</h2>
-      <p className="text-gray-300 mb-6">{championshipInfo.description}</p>
+      <div className="flex justify-between items-center">
+        <div>
+          <h2 className="text-2xl font-bold mb-2">{championshipInfo.name}</h2>
+          <p className="text-gray-300 mb-6">{championshipInfo.description}</p>
+        </div>
+        <Modal championshipInfo={championshipInfo} />
+      </div>
 
       <div className="grid grid-cols-2 divide-x divide-gray-700">
         <div className="pr-6 space-y-6">

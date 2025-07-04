@@ -11,7 +11,7 @@ export const useGetChampionshipInfo = (
   id: number
 ): UseQueryResult<ChampionshipType, Error | AxiosError> => {
   return useQuery({
-    queryKey: ["GET-GAME-INFO", id],
+    queryKey: ["GET-CHAMPIONSHIP-INFO", id],
     queryFn: () => getChampionshipInfo(id),
   });
 };

@@ -36,10 +36,6 @@ export function Sidebar() {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   navigate("/game/1");
-  // }, []);
-
   return (
     <div
       className={`flex flex-col min-h-screen w-full p-2 items-center gap-4  duration-300 ease-in`}

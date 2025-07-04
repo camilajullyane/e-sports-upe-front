@@ -21,6 +21,7 @@ export interface ChampionshipType {
   createdAt: string;
   updatedAt: string;
   teams: Team[];
+  numPlayersByTeam: number;
 }
 
 export const CreateChampionshipSchema = z.object({
