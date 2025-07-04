@@ -34,7 +34,10 @@ export function LoginPage() {
           navigate("/admin/campeonato");
         }
       })
-      .catch((error) => console.log("erro", error));
+      .catch((error) => {
+        console.log("erro", error);
+        toast.error("Credenciais erradas.");
+      });
   };
 
   const {

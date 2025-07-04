@@ -50,6 +50,7 @@ const ChampionshipAdmin = lazy(() =>
 
 export function Router() {
   const { logged } = authStore().load();
+  const user = authStore().user;
 
   const authRoutes = (
     <Route element={<PublicRoute />}>
@@ -90,7 +91,11 @@ export function Router() {
         <Route
           element={logged ? <ProtectedRoute /> : <Navigate to={"/signin"} />}
         >
-          <Route element={<MainLayout />}>{studentProtectedRoutes}</Route>
+          <Route element={<MainLayout />}>
+            {user && user.role == "STUDENT"
+              ? studentProtectedRoutes
+              : adminProtectedRoutes}
+          </Route>
         </Route>
       </Routes>
     </Suspense>
