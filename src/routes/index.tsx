@@ -1,10 +1,13 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useNavigate } from "react-router";
 import { PublicRoute } from "./PublicRoute";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { authStore } from "@/store/auth.store";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { CircularProgress } from "@/customComponents/CircularProgress";
 import { MainLayout } from "@/layout/MainLayout";
+import { api } from "@/lib/axios";
+import { AxiosError, isAxiosError } from "axios";
+import { toast } from "react-toastify";
 
 const InitialPageRouter = lazy(() =>
   import("@/pages/Initial/Router").then((module) => ({
@@ -51,6 +54,33 @@ const ChampionshipAdmin = lazy(() =>
 export function Router() {
   const { logged } = authStore().load();
   const user = authStore().user;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const responseInterceptor = api.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      (error: Error | AxiosError) => {
+        if (isAxiosError(error)) {
+          const status = error.response?.status;
+
+          if (status === 401) {
+            toast.error("Você não tem autorização para acessar essa página.");
+            sessionStorage.clear();
+            navigate("/login", { replace: true });
+          }
+        }
+
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      api.interceptors.response.eject(responseInterceptor);
+    };
+  }, [navigate]);
 
   const authRoutes = (
     <Route element={<PublicRoute />}>
